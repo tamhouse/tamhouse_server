@@ -36,14 +36,14 @@ app.use(mongoSanitize());
 app.use(compression());
 app.use('/img', express.static(path.join(__dirname, '../public/images')));
 
-const corOption = {
-  origin: 'http://localhost:3001',
-  optionsSuccessStatus: 200,
-  methods: 'GET, PUT, POST, DELETE',
-};
+// const corOption = {
+//   origin: ['process.env.REACT_CLIENT', 'process.env.REACT_ADMIN'],
+//   optionsSuccessStatus: 200,
+//   methods: 'GET, PUT, POST, DELETE, PATCH',
+// };
 // enable cors
-app.use(cors(corOption));
-app.options('*', cors(corOption));
+app.use(cors());
+// app.options('*', cors(corOption));
 
 // v1 api routes
 app.use('/v1', routes);

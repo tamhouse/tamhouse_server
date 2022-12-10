@@ -13,7 +13,6 @@ router
 router
   .route('/:productId')
   .get(productController.getProduct)
-  .post(productController.updateView)
   .patch(upload.single('image'), productController.updateProduct)
   .delete(productController.deleteProduct);
 

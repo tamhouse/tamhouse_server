@@ -2,6 +2,8 @@ const express = require('express');
 const productRoute = require('./product.route');
 const categoryRoute = require('./category.route');
 const imageRoute = require('./image.route');
+const inforRoute = require('./infor.route');
+const slideRoute = require('./slide.route');
 
 const router = express.Router();
 
@@ -17,6 +19,14 @@ const defaultRoutes = [
   {
     path: '/images',
     route: imageRoute,
+  },
+  {
+    path: '/infor',
+    route: inforRoute,
+  },
+  {
+    path: '/slide',
+    route: slideRoute,
   },
 ];
 

@@ -13,7 +13,7 @@ const getProduct = async (name) => {
 };
 const getProductLimit = async (limit, category) => {
   const products = await Product.find({ category }).limit(limit).lean();
-  const count = await Product.find({ category }).estimatedDocumentCount();
+  const count = await Product.countDocuments({ category });
   return { products, count };
 };
 const getProductLimitByPage = async (limit, skip) => {
@@ -29,16 +29,16 @@ const updateProduct = async (id, body) => {
   Object.assign(product, body);
   return product.save();
 };
-const updateViews = async (id) => {
+const updateViews = async (name) => {
   const product = await Product.updateOne(
     {
-      _id: id,
+      name,
     },
     {
       $inc: { views: 1 },
     }
   ).lean();
-  return product.save();
+  return product;
 };
 const deleteProductById = async (id) => {
   const product = await Product.findById(id).lean();
